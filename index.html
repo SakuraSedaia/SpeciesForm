@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form>
+        <h2>REQUIRED FIELDS</h2>
+        Name<i>*</i>:
+        <input type="text" placeholder="First & Last">
+		<br>
+		
+		Middle/Codename:
+        <input type="text" placeholder="Informal/Middle">
+
+        <br>
+
+        <!-- Gender Selection -->
+        Gender<i>*</i>:
+        <select>
+			<option>Male</option>
+			<option>Female</option>
+			<option>Neutral</option>
+		</select>
+
+        <br>
+
+        <!-- Race Selection -->
+        <div class="speciesSelect">
+            Primary Species<i>*</i>: 
+			<select id="speciesSelect" onchange="list()">
+                <option>Human</option>
+                <option>Felina</option>
+                <option>Ardoni</option>
+                <option>Netheran</option>
+                <option>Glacian</option>
+                <option>Jaggathan</option>
+                <option>Magnorite</option>
+            </select>
+
+            <div class="extras" id="extras">
+                <div class="extras-container" id="extraPos">
+                    <div class="human-extra" id="humExt" style="display: inline-block;">
+						Class<i>*</i>:
+                        <select id="humanSelect">
+							<option>Normal</option>
+							<option>Enderknight</option>
+							<option>Necromancer</option>
+						</select>
+                    </div>
+
+
+                    <div class="ardoni-clan" id="ardoClan" style="display: inline-block;">
+						Clan<i>*</i>: 
+                        <select>
+							<option>Clanless</option>
+							<option>Kaltaris</option>
+							<option>Nestoris</option>
+							<option>Mendoris</option>
+							<option>Sendaris</option>
+							<option>Voltaris</option>
+						</select>
+                    </div>
+                </div>
+            </div>
+			
+			Crossbreed?: <input type="checkbox" name="crossbreed" id="">
+        </div>
+        <br>
+
+        Age<i>*</i>: <input type="number" placeholder="24" min="0"> Years
+
+        <br>
+    </form>
+
+    <script src="form.js"></script>
+</body>
+
+</html>

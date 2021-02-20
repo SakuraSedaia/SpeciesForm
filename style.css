@@ -1,0 +1,22 @@
+/* CSS Document */
+@import url("https://sakura-sedaia.com/assets/fonts/fonts.css");
+form {
+  font-family: "Open Sans"; }
+  form i {
+    color: red; }
+  form h2 {
+    font-family: "Noto Sans JP"; }
+  form .extras {
+    overflow: hidden;
+    height: 1.3em; }
+    form .extras .extras-container {
+      position: relative;
+      transform: translateY(0); }
+      form .extras .extras-container .human-extra {
+        float: left;
+        position: absolute;
+        transform: translateY(0); }
+      form .extras .extras-container .ardoni-clan {
+        float: left;
+        position: absolute;
+        transform: translateY(25px); }
