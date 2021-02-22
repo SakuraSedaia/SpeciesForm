@@ -12,23 +12,32 @@ form {
 		font-family: "Noto Sans JP";
 	}
 
-	.extras {
+	#extras {
 		overflow: hidden;
 		height: 1.3em;
 
-		.extras-container {
+		#extraPos {
 			position: relative;
 			transform: translateY(0);
-			.human-extra {
+			#humExt {
 				float: left;
 				position: absolute;
-				transform: translateY(0)
+				transform: translateY(0);
 			}
 
-			.ardoni-clan {
+			#ardoClan {
 				float: left;
 				position: absolute;
 				transform: translateY(25px);
+			}
+		}
+		
+		#hybrid {
+			width:0px;
+			overflow: hidden;
+
+			#hybridToggle {
+				cursor: pointer;
 			}
 		}
 	}
