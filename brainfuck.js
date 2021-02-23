@@ -21,6 +21,8 @@ function speciesSelect() {
     } 
     
     // Ardoni Ruleset
+    if (returnSpeciesValue == 'Ardoni') {
+    } 
 
     // Magnorite Ruleset
     if (returnSpeciesValue == 'Magnorite') {
@@ -42,6 +44,7 @@ function speciesSelect() {
 function updateHybrid() {
     if (hBox.checked == true) {
         hBox.checked = false
+        
         console.log('I fucking hate you')
     } else {
         hBox.checked = true
