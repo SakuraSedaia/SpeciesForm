@@ -14,6 +14,14 @@ var crossContain = document.getElementById('crossbreed')
 
 var maxAge
 
+
+// Version Checker
+var configVersion;
+var configRecomendedVersion = "SoW-Race-1"
+if (configVersion != configRecomendedVersion) {
+    window.alert("NOTICE: Configuration Format Error\n\nIncorrect Race Configuration Format\n\nRecommended Version: " + configRecomendedVersion)
+}
+
 // Modify form based on Species Selection
 function speciesSelect() {
     var returnSpeciesValue = document.getElementById('speciesSelectList').value
@@ -47,7 +55,6 @@ function speciesSelect() {
         hBox.checked = false
         hBox.style.pointerEvents = 'none'
 
-        updateHybrid()
     } else {
         // Invert Rulesets when Species is changed off of "Magnorite"
 
@@ -56,6 +63,7 @@ function speciesSelect() {
         hBox.style.pointerEvents = 'auto'
     }
 
+    createSpeciesFilter()
     console.log('Species set to "' + returnSpeciesValue + '"')
 }
 
@@ -105,3 +113,4 @@ function updateHybrid() {
         crossContain.style.height = "100px"
     }
 }
+
