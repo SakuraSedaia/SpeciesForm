@@ -10,20 +10,32 @@ var hybrid = document.getElementById('hybrid')
 var hLab = document.getElementById('hybridLabel')
 var hBox = document.getElementById('hybridToggle')
 var maxAge
-// Which list should I show?
-function list() {
-    returnSpeciesValue = document.getElementById('speciesSelectList').value
-    console.log("Fuck You")
 
+// Modify form based on Species Selection
+function speciesSelect() {
+    returnSpeciesValue = document.getElementById('speciesSelectList').value
+    console.log('Species set to "' + returnSpeciesValue + '"')
+    
+    // Human Ruleset
     if (returnSpeciesValue == 'Human') {
     } 
     
-    
+    // Ardoni Ruleset
+
+    // Magnorite Ruleset
     if (returnSpeciesValue == 'Magnorite') {
-        hybrid.style.visibility = "hidden"
-    } else {
-        hybrid.style.visibility = "initial"
+        // Activate Rulesets for when "Magnorite" is Selected
+        hybrid.style.opacity = "0%"
         hBox.checked = false;
+        hBox.style.pointerEvents = "none"
+
+        updateHybrid()
+    } else {
+        // Invert Rulesets when Species is changed off of "Magnorite"
+
+        hybrid.style.opacity = "100%"
+        hBox.checked = false;
+        hBox.style.pointerEvents = "auto"
     }
 }
 

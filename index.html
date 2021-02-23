@@ -2,30 +2,29 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Form</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <form>
         <h2>REQUIRED FIELDS</h2>
         Name<i>*</i>:
-        <input type="text" placeholder="First & Last" />
-        <br />
+        <input type="text" placeholder="First & Last">
+        <br>
 
         Middle/Codename:
-        <input type="text" placeholder="Informal/Middle" />
+        <input type="text" placeholder="Informal/Middle">
 
-        <br />
+        <br>
 
         <!-- Gender Selection -->
         Gender<i>*</i>:
         <select>
             <option>Male</option>
             <option>Female</option>
-            <option>Neutral</option>
         </select>
 
         <br />
@@ -34,7 +33,7 @@
         <!-- Race Selection -->
         <div id="speciesSelect">
             Primary Species<i>*</i>:
-            <select id="speciesSelectList" onchange="list()">
+            <select id="speciesSelectList" onchange="speciesSelect()">
                 <option>Human</option>
                 <option>Felina</option>
                 <option>Ardoni</option>
@@ -79,18 +78,18 @@
 				<input type="checkbox" name="crossbreed" id="hybridToggle" onclick="updateHybrid()"/>
 			</span>
 			
-            <br />
-            <br />
+            <br>
+            <br>
 			
 			<div class="test-item" id="test">
 				Test
 			</div>
         </div>
-        <br />
+        <br>
 
         Age<i>*</i>: <input type="number" placeholder="24" min="0" id="ageInput"> Years
 
-        <br />
+        <br>
     </form>
 
     <script src="form.js"></script>

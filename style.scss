@@ -3,7 +3,7 @@
 
 form {
 	font-family: "Open Sans";
-	
+
 	i {
 		color: red;
 	}
@@ -11,34 +11,38 @@ form {
 	h2 {
 		font-family: "Noto Sans JP";
 	}
-
-	#extras {
-		overflow: hidden;
-		height: 1.3em;
-
-		#extraPos {
-			position: relative;
-			transform: translateY(0);
-			#humExt {
-				float: left;
-				position: absolute;
-				transform: translateY(0);
-			}
-
-			#ardoClan {
-				float: left;
-				position: absolute;
-				transform: translateY(25px);
-			}
-		}
-		
-		#hybrid {
-			width:0px;
-			overflow: hidden;
-
-			#hybridToggle {
-				cursor: pointer;
-			}
-		}
-	}
 }
+
+// ID Rulesets
+
+#extras {
+	overflow: hidden;
+	height: 1.3em;
+}
+
+#extraPos {
+	position: relative;
+	transform: translateY(0);
+
+}
+
+#humExt {
+	float: left;
+	position: absolute;
+	transform: translateY(0);
+}
+
+#ardoClan {
+	float: left;
+	position: absolute;
+	transform: translateY(25px);
+}
+
+#hybrid {
+	width: 200px;
+	height: auto;
+	overflow: hidden;
+}
+#hybridToggle {
+		cursor: pointer;
+	}
