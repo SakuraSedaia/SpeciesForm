@@ -2,6 +2,8 @@
 var extraContain = document.getElementById('extras')
 var extraPos = document.getElementById('extraPos')
 
+var extraContainTwo = document.getElementById('extrasTwo')
+var extraPosTwo = document.getElementById('extraPosTwo')
 // Species Selectors
 
 var hybrid = document.getElementById('hybrid')
@@ -52,6 +54,33 @@ function speciesSelect() {
         hybrid.style.opacity = '100%'
         hBox.checked = false
         hBox.style.pointerEvents = 'auto'
+    }
+
+    console.log('Species set to "' + returnSpeciesValue + '"')
+}
+
+function speciesSelectTwo() {
+    var returnSpeciesValue = document.getElementById('speciesSelectListTwo').value
+    var extraHeight = '1.4em'
+
+    // Human/Ardoni Clan/Class Tags
+    if (returnSpeciesValue == ('Human' || "Ardoni")) {
+        // Apply Height
+        extraContainTwo.style.height = extraHeight
+
+    } if (returnSpeciesValue == 'Human') {
+
+        // Apply Human Ruleset
+        extraPosTwo.style.transform = 'translateY(0px)'
+
+    } else if (returnSpeciesValue == 'Ardoni') {
+        // Apply Ardoni Rulesets
+        extraPosTwo.style.transform = 'translateY(-25px)'
+
+    } else {
+
+        extraContainTwo.style.height = '0em'
+        extraPosTwo.style.transform = 'translateY(0px)'
     }
 
     console.log('Species set to "' + returnSpeciesValue + '"')

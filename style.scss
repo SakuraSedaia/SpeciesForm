@@ -47,6 +47,29 @@ form {
 	transform: translateY(25px);
 }
 
+#extrasTwo {
+	overflow: hidden;
+	height: 1.4em;
+}
+
+#extraPosTwo {
+	position: relative;
+	transform: translateY(0);
+
+}
+
+#humExtTwo {
+	float: left;
+	position: absolute;
+	transform: translateY(0);
+}
+
+#ardoClanTwo {
+	float: left;
+	position: absolute;
+	transform: translateY(25px);
+}
+
 #hybrid {
 	width: 200px;
 	height: auto;
@@ -60,6 +83,7 @@ form {
 #crossbreed {
 	height: 0px;
 	overflow: hidden;
+	border-bottom: 3px solid;
 }
 
 #necroButton {
