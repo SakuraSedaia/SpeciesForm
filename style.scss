@@ -11,13 +11,16 @@ form {
 	h2 {
 		font-family: "Noto Sans JP";
 	}
+	input[type="checkbox"] {
+		pointer-events: none;
+	}
 }
 
 // ID Rulesets
 
 #extras {
 	overflow: hidden;
-	height: 1.3em;
+	height: 1.4em;
 }
 
 #extraPos {
@@ -43,6 +46,12 @@ form {
 	height: auto;
 	overflow: hidden;
 }
+
 #hybridToggle {
-		cursor: pointer;
-	}
+	cursor: pointer;
+}
+
+#crossbreed {
+	height: 0px;
+	overflow: hidden;
+}

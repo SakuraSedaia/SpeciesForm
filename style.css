@@ -6,10 +6,12 @@ form {
     color: red; }
   form h2 {
     font-family: "Noto Sans JP"; }
+  form input[type="checkbox"] {
+    pointer-events: none; }
 
 #extras {
   overflow: hidden;
-  height: 1.3em; }
+  height: 1.4em; }
 
 #extraPos {
   position: relative;
@@ -32,3 +34,7 @@ form {
 
 #hybridToggle {
   cursor: pointer; }
+
+#crossbreed {
+  height: 0px;
+  overflow: hidden; }
