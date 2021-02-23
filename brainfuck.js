@@ -59,12 +59,20 @@ function speciesSelect() {
 
 function updateHybrid() {
     if (hBox.checked == true) {
-        hBox.checked = false
-        
-        crossContain.style.height = "0px"
-    } else {
-        hBox.checked = true
+        hBox.checked = false // Sets the Form Value to "False"
 
+        // Style the Hybrid Toggle Button
+        hLab.style.color = "black"
+
+        // Hide CB Options and reset them
+        crossContain.style.height = "0px" 
+    } else {
+        hBox.checked = true // Sets the Form Value to "True"
+
+        // Style the Hybrid Toggle Button
+        hLab.style.color = "red"
+
+        // Show CB Options
         crossContain.style.height = "100px"
     }
 }

@@ -2,23 +2,34 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <p>
+        Checkbox Items are not Checkable, you must press the Label to Activate
+        them
+    </p>
+    <p>
+        Items that have a Line through them are not active, do not try to use them
+        because they would be useless
+    </p>
+
+   	<!-- COPY EVERYTHING AFTER THIS COMMENT-->
+	
     <form>
-        <h2>REQUIRED FIELDS</h2>
+		<!-- Names -->
         Name<i>*</i>:
-        <input type="text" placeholder="First & Last">
-        <br>
+        <input type="text" placeholder="First & Last" />
+        <br />
 
         Middle/Codename:
-        <input type="text" placeholder="Informal/Middle">
+        <input type="text" placeholder="Informal/Middle" />
 
-        <br>
+        <br />
 
         <!-- Gender Selection -->
         Gender<i>*</i>:
@@ -28,7 +39,7 @@
         </select>
 
         <br />
-		<br />
+        <br />
 
         <!-- Race Selection -->
         <div id="speciesSelect">
@@ -66,30 +77,33 @@
                     </div>
                 </div>
             </div>
-			
-			<span>
-				Necromancer?: 
-				<input type="checkbox" name="necromancer"/> 
-			</span>
-			
-			<!-- Secondary Species -->
+
+            <span>
+                <span id="necroButton" onclick="/* Code will be entered at some point idfk */"
+                    class="labelButton">Necromancer</span>
+                <input type="checkbox" name="necromancer" />
+            </span>
+            |
+            <!-- Secondary Species -->
             <span id="hybrid">
-				<span id="hybridLabel" onclick="updateHybrid()">| Crossbreed?: </span>
-				<input type="checkbox" name="crossbreed" id="hybridToggle" onclick="updateHybridBox()">
-			</span>
-			
-            <br>
-            <br>
-			
-			<div id="crossbreed">
-				Test
-			</div>
+                <span id="hybridLabel" onclick="updateHybrid()" class="labelButton">Crossbreed
+                </span>
+                <input type="checkbox" name="crossbreed" id="hybridToggle" onclick="updateHybridBox()" />
+            </span>
+
+            <br />
+            <br />
+
+            <div id="crossbreed">
+                Test
+            </div>
         </div>
-        <br>
+        <br />
 
-        Age<i>*</i>: <input type="number" placeholder="24" min="0" id="ageInput"> Years
+        Age<i>*</i>:
+        <input type="number" placeholder="24" min="0" id="ageInput" /> Years
 
-        <br>
+        <br />
     </form>
 
     <script src="brainfuck.js"></script>

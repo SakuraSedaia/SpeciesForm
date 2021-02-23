@@ -7,7 +7,11 @@ form {
   form h2 {
     font-family: "Noto Sans JP"; }
   form input[type="checkbox"] {
-    pointer-events: none; }
+    pointer-events: none;
+    opacity: 50%;
+    color: red; }
+  form .labelButton {
+    cursor: pointer; }
 
 #extras {
   overflow: hidden;
@@ -38,3 +42,6 @@ form {
 #crossbreed {
   height: 0px;
   overflow: hidden; }
+
+#necroButton {
+  text-decoration: line-through; }

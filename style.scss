@@ -13,6 +13,12 @@ form {
 	}
 	input[type="checkbox"] {
 		pointer-events: none;
+		opacity: 50%;
+		color: red;
+	}
+	.labelButton {
+		cursor: pointer;
+		
 	}
 }
 
@@ -54,4 +60,8 @@ form {
 #crossbreed {
 	height: 0px;
 	overflow: hidden;
+}
+
+#necroButton {
+	text-decoration: line-through;
 }
