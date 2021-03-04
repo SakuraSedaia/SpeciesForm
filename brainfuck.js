@@ -17,7 +17,7 @@ var secondSpeciesList = document.getElementById('speciesSelectListTwo')
 
 var maxAge
 var speciesCount = secondSpeciesList.childElementCount
-
+var disabledSpecies = []
 
 // Modify form based on Species Selection
 function speciesSelect() {
@@ -60,7 +60,6 @@ function speciesSelect() {
         hBox.style.pointerEvents = 'auto'
     }
 
-    createSpeciesFilter()
     console.log('Species set to "' + returnSpeciesValue + '"')
 }
 
@@ -95,6 +94,7 @@ function updateHybrid() {
     if (hBox.checked == true) {
         hBox.checked = false // Sets the Form Value to "False"
 
+        console.info("Crossbreed Disabled")
         // Style the Hybrid Toggle Button
         hLab.style.color = "black"
 
@@ -103,17 +103,22 @@ function updateHybrid() {
     } else {
         hBox.checked = true // Sets the Form Value to "True"
 
+        console.info("Crossbreed Enabled")
         // Style the Hybrid Toggle Button
         hLab.style.color = "red"
 
         // Show CB Options
         crossContain.style.height = "100px"
     }
+    createSpeciesFilter()
 }
 
 /*
 # setAttribute("disabled", "")
 # removeAttribute("disabled", "")
+
+Get ID of each Element:
+# listSubElms[0].getAttributeNode('id')
 */
 
 // Crossbreed Species Filters
@@ -123,14 +128,35 @@ function createSpeciesFilter() {
     var cbList = secondSpeciesList
     var listSubElms = cbList.getElementsByTagName('option')
 
+    // Apply Filters
+    if (returnSpeciesValue == "Human") {
+        disabledSpecies = ['humCB']
+    } else if (returnSpeciesValue == "Felina") {
+        disabledSpecies = ['felCB']
+    } else if (returnSpeciesValue == "Ardoni") {
+        disabledSpecies = ['ardCB']
+    } else if (returnSpeciesValue == "Netheran") {
+        disabledSpecies = ['netCB','glaCB']
+    } else if (returnSpeciesValue == "Glacian") {
+        disabledSpecies = ['netCB','glaCB']
+    } else if (returnSpeciesValue == "Jaggathan") {
+        disabledSpecies = ['jagCB']
+    } else {
+        console.log("Magnorite Selected, not updating Filters")
+    }
+    console.info("Crossbreed Filter Updated")
+
     // Reset Filter
     for (var i = 0; i < speciesCount; i++) { // Total of 7 Elements
         listSubElms[i].removeAttribute("disabled", "")
+        listSubElms[i].style.display = "auto"
     }
+    console.warn("Crossbreed Filter Reset")
 
-
-    if (returnSpeciesValue == "Human") {
-        // Insert Remove Here
-
+    // Disable Elements
+    for (var i = 0; i < disabledSpecies.length; i++) {
+        document.getElementById(disabledSpecies[i].toString()).setAttribute("disabled",'')
+        document.getElementById(disabledSpecies[i].toString()).setAttribute("hidden",'')
     }
+    console.info("Filter Applied")
 }
