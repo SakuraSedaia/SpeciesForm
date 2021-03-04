@@ -4,27 +4,24 @@ var extraPos = document.getElementById('extraPos')
 
 var extraContainTwo = document.getElementById('extrasTwo')
 var extraPosTwo = document.getElementById('extraPosTwo')
-// Species Selectors
 
+// Species Selectors
+var returnSpeciesValue = document.getElementById('speciesSelectList').value
 var hybrid = document.getElementById('hybrid')
 var hLab = document.getElementById('hybridLabel')
 var hBox = document.getElementById('hybridToggle')
 var crossContain = document.getElementById('crossbreed')
+var secondSpeciesList = document.getElementById('speciesSelectListTwo')
 
+// Miscellaneous Variables
 
 var maxAge
+var speciesCount = secondSpeciesList.childElementCount
 
-
-// Version Checker
-var configVersion;
-var configRecomendedVersion = "SoW-Race-1"
-if (configVersion != configRecomendedVersion) {
-    window.alert("NOTICE: Configuration Format Error\n\nIncorrect Race Configuration Format\n\nRecommended Version: " + configRecomendedVersion)
-}
 
 // Modify form based on Species Selection
 function speciesSelect() {
-    var returnSpeciesValue = document.getElementById('speciesSelectList').value
+    
     var extraHeight = '1.4em'
 
     // Human/Ardoni Clan/Class Tags
@@ -114,3 +111,26 @@ function updateHybrid() {
     }
 }
 
+/*
+# setAttribute("disabled", "")
+# removeAttribute("disabled", "")
+*/
+
+// Crossbreed Species Filters
+function createSpeciesFilter() {
+
+    // Get List Elements
+    var cbList = secondSpeciesList
+    var listSubElms = cbList.getElementsByTagName('option')
+
+    // Reset Filter
+    for (var i = 0; i < speciesCount; i++) { // Total of 7 Elements
+        listSubElms[i].removeAttribute("disabled", "")
+    }
+
+
+    if (returnSpeciesValue == "Human") {
+        // Insert Remove Here
+
+    }
+}
