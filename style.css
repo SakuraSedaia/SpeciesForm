@@ -49,13 +49,16 @@ form {
   position: absolute;
   transform: translateY(25px); }
 
+#necroToggle {
+  pointer-events: none; }
+
 #hybrid {
   width: 200px;
   height: auto;
   overflow: hidden; }
 
 #hybridToggle {
-  cursor: pointer; }
+  pointer-events: none; }
 
 #crossbreed {
   height: 0px;
