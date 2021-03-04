@@ -34,7 +34,7 @@ function speciesSelect() {
 
     var extraHeight = '1.4em'
     // Human/Ardoni Clan/Class Tags
-    if (returnSpeciesValue == 'Human' || returnSpeciesValue == 'Ardoni')) {
+    if (returnSpeciesValue == 'Human' || returnSpeciesValue == 'Ardoni') {
         // Apply Height
         extraContain.style.height = extraHeight
     }
