@@ -8,8 +8,7 @@ form {
     font-family: "Noto Sans JP"; }
   form input[type="checkbox"] {
     pointer-events: none;
-    opacity: 50%;
-    color: red; }
+    display: none; }
   form .labelButton {
     cursor: pointer; }
 

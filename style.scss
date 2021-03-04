@@ -13,8 +13,7 @@ form {
 	}
 	input[type="checkbox"] {
 		pointer-events: none;
-		opacity: 50%;
-		color: red;
+		display: none;
 	}
 	.labelButton {
 		cursor: pointer;
