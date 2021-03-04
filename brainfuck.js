@@ -94,7 +94,7 @@ function updateHybrid () {
     hLab.style.color = 'red'
 
     // Show CB Options
-    crossContain.style.height = '100px'
+    crossContain.style.height = 'auto'
   }
   createSpeciesFilter()
 }
