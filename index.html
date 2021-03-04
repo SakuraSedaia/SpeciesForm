@@ -1,142 +1,134 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Form</title>
     <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 
-<body>
-    <p>
-        Checkbox Items are not Checkable, you must press the Label to Activate
-        them
-    </p>
-    <p>
-        Items that have a Line through them are not active, do not try to use them
-        because they would be useless
-    </p>
-
-   	<!-- COPY EVERYTHING AFTER THIS COMMENT-->
-	
+  <body>
     <form>
-		<!-- Names -->
-        Name<i>*</i>:
-        <input type="text" placeholder="First & Last"/>
-        <br />
+      <!-- Names -->
+      Name<i>*</i>:
+      <input type="text" placeholder="First & Last" />
+      <br />
 
-        Middle/Codename:
-        <input type="text" placeholder="Informal/Middle" />
+      Middle/Codename:
+      <input type="text" placeholder="Informal/Middle" />
 
-        <br />
+      <br />
 
-        <!-- Gender Selection -->
-        Gender<i>*</i>:
-        <select>
-            <option>Male</option>
-            <option>Female</option>
+      <!-- Gender Selection -->
+      Gender<i>*</i>:
+      <select>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+
+      <br />
+      <br />
+
+      <!-- Race Selection -->
+      <div id="speciesSelect">
+        Primary Species<i>*</i>:
+        <select id="speciesSelectList" onchange="speciesSelect()">
+          <option>Human</option>
+          <option>Felina</option>
+          <option>Ardoni</option>
+          <option>Netheran</option>
+          <option>Glacian</option>
+          <option>Jaggathan</option>
+          <option>Magnorite</option>
         </select>
 
-        <br />
-        <br />
-
-        <!-- Race Selection -->
-        <div id="speciesSelect">
-            Primary Species<i>*</i>:
-            <select id="speciesSelectList" onchange="speciesSelect()">
-                <option>Human</option>
-                <option>Felina</option>
-                <option>Ardoni</option>
-                <option>Netheran</option>
-                <option>Glacian</option>
-                <option>Jaggathan</option>
-                <option>Magnorite</option>
-            </select>
-
-            <div id="extras">
-                <div id="extraPos">
-                    <div id="humExt" style="display: inline-block">
-                        Class<i>*</i>:
-                        <select id="humanSelect">
-                            <option>Normal</option>
-                            <option>Enderknight</option>
-                        </select>
-                    </div>
-
-                    <div id="ardoClan">
-                        Clan<i>*</i>:
-                        <select>
-                            <option>Clanless</option>
-                            <option>Kaltaris</option>
-                            <option>Nestoris</option>
-                            <option>Mendoris</option>
-                            <option>Sendaris</option>
-                            <option>Voltaris</option>
-                        </select>
-                    </div>
-                </div>
+        <div id="extras">
+          <div id="extraPos">
+            <div id="humExt" style="display: inline-block">
+              Class<i>*</i>:
+              <select id="humanSelect">
+                <option>Normal</option>
+                <option>Enderknight</option>
+              </select>
             </div>
-		</div>
-            <span>
-                <span id="necroButton" onclick="updateNecro()" class="labelButton">Necromancer</span>
-                <input type="checkbox" name="necromancer" id="necroToggle" />
-            </span>
-            |
-            <!-- Secondary Species -->
-            <span id="hybrid">
-                <span id="hybridLabel" onclick="updateHybrid()" class="labelButton">Crossbreed</span>
-                <input type="checkbox" name="crossbreed" id="hybridToggle"/>
-            </span>
 
-            <br />
-            <br />
-
-            <div id="crossbreed">
-                Secondary Species<i>*</i>:
-            <select id="speciesSelectListTwo" onchange="speciesSelectTwo()">
-                <option id="humCB" disabled>Human</option>
-                <option id="felCB">Felina</option>
-                <option id="ardCB">Ardoni</option>
-                <option id="netCB">Netheran</option>
-                <option id="glaCB">Glacian</option>
-                <option id="jagCB">Jaggathan</option>
-                <option id="magCB">Magnorite</option>
-            </select>
-
-            <div id="extrasTwo">
-                <div id="extraPosTwo">
-                    <div id="humExtTwo" style="display: inline-block">
-                        Class<i>*</i>:
-                        <select id="humanSelectTwo">
-                            <option>Normal</option>
-                            <option>Enderknight</option>
-                        </select>
-                    </div>
-
-                    <div id="ardoClanTwo">
-                        Clan<i>*</i>:
-                        <select>
-                            <option>Clanless</option>
-                            <option>Kaltaris</option>
-                            <option>Nestoris</option>
-                            <option>Mendoris</option>
-                            <option>Sendaris</option>
-                            <option>Voltaris</option>
-                        </select>
-                    </div>
-                </div>
+            <div id="ardoClan">
+              Clan<i>*</i>:
+              <select>
+                <option>Clanless</option>
+                <option>Kaltaris</option>
+                <option>Nestoris</option>
+                <option>Mendoris</option>
+                <option>Sendaris</option>
+                <option>Voltaris</option>
+              </select>
             </div>
+          </div>
         </div>
-        <br />
+      </div>
+      <span>
+        <span id="necroButton" onclick="updateNecro()" class="labelButton"
+          >Necromancer</span
+        >
+        <input type="checkbox" name="necromancer" id="necroToggle" />
+      </span>
+      |
+      <!-- Secondary Species -->
+      <span id="hybrid">
+        <span id="hybridLabel" onclick="updateHybrid()" class="labelButton"
+          >Crossbreed</span
+        >
+        <input type="checkbox" name="crossbreed" id="hybridToggle" />
+      </span>
 
-        Age<i>*</i>:
-        <input type="number" placeholder="24" min="0" id="ageInput" /> Years
+      <br />
+      <br />
 
-        <br />
+      <div id="crossbreed">
+        Secondary Species<i>*</i>:
+        <select id="speciesSelectListTwo" onchange="speciesSelectTwo()">
+          <option>None</option>
+          <option id="humCB">Human</option>
+          <option id="felCB">Felina</option>
+          <option id="ardCB">Ardoni</option>
+          <option id="netCB">Netheran</option>
+          <option id="glaCB">Glacian</option>
+          <option id="jagCB">Jaggathan</option>
+          <option id="magCB">Magnorite</option>
+        </select>
+        <span id="speciesWarningCB"></span>
+        <div id="extrasTwo">
+          <div id="extraPosTwo">
+            <div id="humExtTwo" style="display: inline-block">
+              Class<i>*</i>:
+              <select id="humanSelectTwo">
+                <option>Normal</option>
+                <option>Enderknight</option>
+              </select>
+            </div>
+
+            <div id="ardoClanTwo">
+              Clan<i>*</i>:
+              <select>
+                <option>Clanless</option>
+                <option>Kaltaris</option>
+                <option>Nestoris</option>
+                <option>Mendoris</option>
+                <option>Sendaris</option>
+                <option>Voltaris</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      Age<i>*</i>:
+      <input type="number" placeholder="24" min="0" id="ageInput" /> Years
+
+      <br />
     </form>
 
     <script src="brainfuck.js"></script>
-</body>
-
+  </body>
 </html>
