@@ -116,11 +116,11 @@ function createSpeciesFilter () {
 
   // Apply Filters
   if (returnSpeciesValue == 'Netheran') {
-    disabledSpecies.push('glaCB')
+    disabledSpecies.push('glaCB') // Remove Glacian from Netheran CB Options
   } else if (returnSpeciesValue == 'Glacian') {
-    disabledSpecies.push('netCB')
+    disabledSpecies.push('netCB') // Remove Netheran from Glacian CB Options
   } else if (returnSpeciesValue == 'Magnorite') {
-    // Create and Add Everything to Filter
+    // Remove everything from form when Magnorite is selected
     for (var i = 0; i < mainList.length - 1; i++) {
       disabledSpecies.push(
         mainList[i].innerText
