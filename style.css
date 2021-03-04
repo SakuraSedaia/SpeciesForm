@@ -65,5 +65,5 @@ form {
   overflow: hidden;
   border-bottom: 3px solid; }
 
-#necroButton {
-  text-decoration: line-through; }
+#necroToggle {
+  pointer-events: none; }
