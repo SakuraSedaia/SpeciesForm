@@ -1,195 +1,149 @@
-// Elements
-var extraContain = document.getElementById('extras')
-var extraPos = document.getElementById('extraPos')
+// Default Values
+var defaultGender = "Male"
+var defaultSpecies = "Human"
+var defaultSecondSpecies = "None"
+var maxAges = [
+  [0, null],
+  [100, "Human"],
+  [100, "Felina"],
+  [300, "Ardoni"],
+  [800, "Netheran"],
+  [1000, "Glacian"],
+  [100, "Jaggathan"],
+  [30, "Magnorite"],
+  // =-=-=-=-=-= //
+  [400, "Enderknight"]
+]
+// =-=-=-=-=-= //
 
-var extraContainTwo = document.getElementById('extrasTwo')
-var extraPosTwo = document.getElementById('extraPosTwo')
+// Internal Variables
+var activeSpe
+var activeCroSpe = 0
 
-// Species Selectors
-var returnSpeciesValue = document.getElementById('speciesSelectList').value
-var currentID =
-  returnSpeciesValue
-    .substr(0, 3)
-    .toString()
-    .toLowerCase() + 'CB'
-var hybrid = document.getElementById('hybrid')
-var hLab = document.getElementById('hybridLabel')
-var hBox = document.getElementById('hybridToggle')
-var crossContain = document.getElementById('crossbreed')
-var secondSpeciesList = document.getElementById('speciesSelectListTwo')
+// Create HTML References
+// _Names
+var name
+var alias
+var surname
 
-// Miscellaneous Variables
-var maxAge
-var speciesCount = secondSpeciesList.childElementCount
-var disabledSpecies = []
+// _Age
+var age = document.getElementById("age") // Age Input
+var maxAge = document.getElementById("maxAge") // Maximum Age Text
 
-// Modify form based on Species Selection
-function speciesSelect () {
-  returnSpeciesValue = document.getElementById('speciesSelectList').value
-  currentID =
-    returnSpeciesValue
-      .substr(0, 3)
-      .toString()
-      .toLowerCase() + 'CB'
+// _Species
+var mainSpecies = document.getElementById("spe")
+var crossSpecies = document.getElementById("croSpe")
+var necro = document.getElementById("nec")
+var ender = document.getElementById("end")
+var clan = document.getElementById("ardoClan")
+var clanDos = document.getElementById("secondArdoClan")
+var animal
+var animalText
+// =-=-=-=-=-= //
 
-  var extraHeight = '1.4em'
-  // Human/Ardoni Clan/Class Tags
-  if (returnSpeciesValue == 'Human' || returnSpeciesValue == 'Ardoni') {
-    // Apply Height
-    extraContain.style.height = extraHeight
+// Startup Functions
+setMainSpecies()
+// setCrossSpecies()
+
+// =-=-=-=-=-= //
+// Functions
+function setMaxAge() {
+  if (activeCroSpe == 0) {
+    activeCroSpe = activeSpe
+
+    console.log("Cross Species Lifespan Equalized")
   }
-  if (returnSpeciesValue == 'Human') {
-    // Apply Human Ruleset
-    extraPos.style.transform = 'translateY(0px)'
-  } else if (returnSpeciesValue == 'Ardoni') {
-    // Apply Ardoni Rulesets
-    extraPos.style.transform = 'translateY(-25px)'
-  } else {
-    extraContain.style.height = '0em'
-    extraPos.style.transform = 'translateY(0px)'
+  maximumAgeValue = ((maxAges[activeSpe + 1][0] + maxAges[activeCroSpe][0]) / 2)
+  maxAge.innerText = maximumAgeValue
+  age.setAttribute('max',maximumAgeValue);
+  
+  if (age.value > maximumAgeValue) {
+    window.alert("Maximum age for your Species selection is " + maximumAgeValue );
   }
-  createSpeciesFilter()
-  console.log('Species set to "' + returnSpeciesValue + '"')
+
 }
 
-// Modify CB form based on Species Selection
-function speciesSelectTwo () {
-  returnSpeciesValueTwo = document.getElementById('speciesSelectListTwo').value
-
-  var extraHeightTwo = '1.4em'
-  // Human/Ardoni Clan/Class Tags
-  if (returnSpeciesValueTwo == 'Human' || returnSpeciesValueTwo == 'Ardoni') {
-    // Apply Height
-    extraContainTwo.style.height = extraHeightTwo
-  }
-  if (returnSpeciesValueTwo == 'Human') {
-    // Apply Human Ruleset
-    extraPosTwo.style.transform = 'translateY(0px)'
-  } else if (returnSpeciesValueTwo == 'Ardoni') {
-    // Apply Ardoni Rulesets
-    extraPosTwo.style.transform = 'translateY(-25px)'
-  } else {
-    // Revert Ardoni/Human Rulesets
-    extraContainTwo.style.height = '0em'
-    extraPosTwo.style.transform = 'translateY(0px)'
-  }
-  console.log('Species set to "' + returnSpeciesValueTwo + '"')
-}
-
-function updateHybrid () {
-  if (hBox.checked == true) {
-    hBox.checked = false // Sets the Form Value to "False"
-
-    console.info('Crossbreed Disabled')
-    // Style the Hybrid Toggle Button
-    hLab.style.color = 'black'
-
-    // Hide CB Options and reset them
-    crossContain.style.height = '0px'
-  } else {
-    hBox.checked = true // Sets the Form Value to "True"
-
-    console.info('Crossbreed Enabled')
-    // Style the Hybrid Toggle Button
-    hLab.style.color = 'red'
-
-    // Show CB Options
-    crossContain.style.height = 'auto'
-  }
-  createSpeciesFilter()
-}
-
-var mainList = document
-  .getElementById('speciesSelectList')
-  .getElementsByTagName('option')
-
-// Crossbreed Species Filters
-function createSpeciesFilter () {
-  console.group('Filter Update')
-
-  // Get List Elements
-  var cbList = secondSpeciesList
-  var listSubElms = cbList.getElementsByTagName('option')
-
-  disabledSpecies.splice(0, disabledSpecies.length) // Reset Array
-
-  disabledSpecies.push(currentID)
-
-  // Apply Filters
-  if (returnSpeciesValue == 'Netheran') {
-    disabledSpecies.push('glaCB') // Remove Glacian from Netheran CB Options
-  } else if (returnSpeciesValue == 'Glacian') {
-    disabledSpecies.push('netCB') // Remove Netheran from Glacian CB Options
-  } else if (returnSpeciesValue == 'Magnorite') {
-    // Remove everything from form when Magnorite is selected
-    for (var i = 0; i < mainList.length - 1; i++) {
-      disabledSpecies.push(
-        mainList[i].innerText
-          .substr(0, 3)
-          .toString()
-          .toLowerCase() + 'CB'
-      )
+function setMainSpecies() {
+  var i = 0
+  while (i < mainSpecies.length) {
+    if (mainSpecies.value == maxAges[i][1]) {
+      console.log("Active Main Species = " + maxAges[i][1])
+      activeSpe = i
     }
-
-    // Disable and Hide Crossbreed Section
-    hybrid.style.opacity = '0%'
-    hybrid.style.pointerEvents = 'none'
-    hBox.checked = false
-    hBox.style.pointerEvents = 'none'
-    console.info('Crossbreed Disabled')
-    hLab.style.color = 'black'
-    crossContain.style.height = '0px'
-  } else {
-    // Invert Rulesets when Species is changed off of "Magnorite"
-
-    hybrid.style.opacity = '100%'
-    hybrid.style.pointerEvents = 'auto'
-    hBox.style.pointerEvents = 'auto'
+    i++
   }
-  console.info('Crossbreed Filter Updated')
-  console.log(disabledSpecies)
 
-  // Reset Filter
-  for (var i = 0; i < speciesCount; i++) {
-    // Total of 7 Elements
-    listSubElms[i].removeAttribute('disabled', '')
-    listSubElms[i].style.display = 'initial'
-  }
-  console.warn('Crossbreed Filter Reset')
-
-  // Disable Elements
-  for (var i = 0; i < disabledSpecies.length; i++) {
-    document
-      .getElementById(disabledSpecies[i].toString())
-      .setAttribute('disabled', '')
-    document
-      .getElementById(disabledSpecies[i].toString())
-      .setAttribute('hidden', '')
-  }
-  console.info('Filter Applied')
-  console.groupEnd('Filter Update')
+  setMaxAge()
+  disableEnderknight()
 }
 
-// Necromancer Stuff
-var nLab = document.getElementById('necroButton')
-var nBox = document.getElementById('necroToggle')
 
-function updateNecro () {
-  if (nBox.checked == true) {
-    nBox.checked = false // Sets the Form Value to "False"
 
-    console.info('Necromancer Disabled')
-    // Style the Hybrid Toggle Button
-    nLab.style.color = 'black'
-  } else {
-    nBox.checked = true // Sets the Form Value to "True"
+function setEnderknight() {}
 
-    console.info('Necromancer Enabled')
-    nLab.style.color = 'red'
+function disableEnderknight() {
+  if (activeSpe /= 0) {
+    ender.setAttribute('disabled', '')
+  } else if (activeSpe == 0) {
+    ender.removeAttribute('disabled')
   }
 }
 
-// Run Filters once to set Default Values
-speciesSelect()
-speciesSelectTwo()
-createSpeciesFilter()
+function animalToggle() {}
+
+/* Accordian JS */
+var rowOne = document.getElementById("rowOne")
+var rowTwo = document.getElementById("rowTwo")
+var rowThree = document.getElementById("rowThree")
+var rowFour = document.getElementById("rowFour")
+var rowFive = document.getElementById("rowFive")
+
+// height of rows
+var defaultHeight = "50px"
+var rowOneHeight = "160.225px"
+var rowTwoHeight = "209.425px"
+var rowThreeHeight = "158.425px"
+var rowFourHeight = "158.425px"
+var rowFiveHeight = "154.825px"
+
+function openRow(row) {
+  if (row == 0) {
+    if (rowOne.style.height == rowOneHeight) {
+      rowOne.style.height = defaultHeight
+    } else {
+      rowOne.style.height = rowOneHeight
+    }
+  }
+
+  if (row == 1) {
+    if (rowTwo.style.height == rowTwoHeight) {
+      rowTwo.style.height = defaultHeight
+    } else {
+      rowTwo.style.height = rowTwoHeight
+    }
+  }
+
+  if (row == 2) {
+    if (rowThree.style.height == rowThreeHeight) {
+      rowThree.style.height = defaultHeight
+    } else {
+      rowThree.style.height = rowThreeHeight
+    }
+  }
+
+  if (row == 3) {
+    if (rowFour.style.height == rowFourHeight) {
+      rowFour.style.height = defaultHeight
+    } else {
+      rowFour.style.height = rowFourHeight
+    }
+  }
+
+  if (row == 4) {
+    if (rowFive.style.height == rowFiveHeight) {
+      rowFive.style.height = defaultHeight
+    } else {
+      rowFive.style.height = rowFiveHeight
+    }
+  }
+}
