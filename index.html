@@ -5,127 +5,109 @@
     <meta name="viewport" content="width=device-width" />
     <title>Form</title>
     <link rel="stylesheet" href="style.css" />
+
+    <meta lang="en-us">
   </head>
 
   <body>
     <form>
-      <!-- Names -->
-      Name<i>*</i>:
-      <input type="text" placeholder="First & Last" />
-      <br />
-
-      Middle/Codename:
-      <input type="text" placeholder="Informal/Middle" />
-
-      <br />
-
-      <!-- Gender Selection -->
-      Gender<i>*</i>:
-      <select>
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-
-      <br />
-      <br />
-
-      <!-- Race Selection -->
-      <div id="speciesSelect">
-        Primary Species<i>*</i>:
-        <select id="speciesSelectList" onchange="speciesSelect()">
-          <option>Human</option>
-          <option>Felina</option>
-          <option>Ardoni</option>
-          <option>Netheran</option>
-          <option>Glacian</option>
-          <option>Jaggathan</option>
-          <option>Magnorite</option>
-        </select>
-
-        <div id="extras">
-          <div id="extraPos">
-            <div id="humExt" style="display: inline-block">
-              Class<i>*</i>:
-              <select id="humanSelect">
-                <option>Normal</option>
-                <option>Enderknight</option>
-              </select>
-            </div>
-
-            <div id="ardoClan">
-              Clan<i>*</i>:
-              <select>
-                <option>Clanless</option>
-                <option>Kaltaris</option>
-                <option>Nestoris</option>
-                <option>Mendoris</option>
-                <option>Sendaris</option>
-                <option>Voltaris</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div class="row-1" id="rowOne">
+    
+        <h2>Names</h2>
+    
+        <input type="Text" id="na1" placeholder="First Name">
+        <input type="text" id="na2" placeholder="Alias">
+        <input type="text" id="na3" placeholder="Family/Clan Name">
+    
+        <br>
+    
+        <input type="number" placeholder="Age" id="age" onchange="setMaxAge()"> <label for="age">Max: <i id="maxAge">null</i></label>
       </div>
-      <span>
-        <span id="necroButton" onclick="updateNecro()" class="labelButton"
-          >Necromancer</span
-        >
-        <input type="checkbox" name="necromancer" id="necroToggle" />
-      </span>
-      |
-      <!-- Secondary Species -->
-      <span id="hybrid">
-        <span id="hybridLabel" onclick="updateHybrid()" class="labelButton"
-          >Crossbreed</span
-        >
-        <input type="checkbox" name="crossbreed" id="hybridToggle" />
-      </span>
-
-      <br />
-      <br />
-
-      <div id="crossbreed">
-        Secondary Species<i>*</i>:
-        <select id="speciesSelectListTwo" onchange="speciesSelectTwo()">
-          <option>None</option>
-          <option id="humCB">Human</option>
-          <option id="felCB">Felina</option>
-          <option id="ardCB">Ardoni</option>
-          <option id="netCB">Netheran</option>
-          <option id="glaCB">Glacian</option>
-          <option id="jagCB">Jaggathan</option>
+    
+      <div class="row-2" id="rowTwo">
+    
+        <h2>Genetics</h2>
+    
+        <select id="spe" onchange="setMainSpecies()">
+          <option data-default="true">Human</option>
+          <option data-default="false">Felina</option>
+          <option data-default="false">Ardoni</option>
+          <option data-default="false">Netheran</option>
+          <option data-default="false">Jaggathan</option>
+          <option data-default="false">Glacian</option>
+          <option data-default="false">Magnorite</option>
         </select>
-        <span id="speciesWarningCB"></span>
-        <div id="extrasTwo">
-          <div id="extraPosTwo">
-            <div id="humExtTwo" style="display: inline-block">
-              Class<i>*</i>:
-              <select id="humanSelectTwo">
-                <option>Normal</option>
-                <option>Enderknight</option>
-              </select>
-            </div>
-
-            <div id="ardoClanTwo">
-              Clan<i>*</i>:
-              <select>
-                <option>Clanless</option>
-                <option>Kaltaris</option>
-                <option>Nestoris</option>
-                <option>Mendoris</option>
-                <option>Sendaris</option>
-                <option>Voltaris</option>
-              </select>
-            </div>
-          </div>
+    
+        <select id="croSpe" onchange="setCrossSpecies()" disabled>
+          <option data-default="true">None</option>
+          <option data-default="false">Human</option>
+          <option data-default="false">Felina</option>
+          <option data-default="false">Ardoni</option>
+          <option data-default="false">Netheran</option>
+          <option data-default="false">Jaggathan</option>
+          <option data-default="false">Glacian</option>
+        </select>
+    
+        <div class="subspecies">
+          <input type="checkbox" id="nec">
+          <label for="nec">Necromancer</label>
+    
+          <input type="checkbox" id="end" onchange="setEnderknight()">
+          <label for="end">Enderknight</label>
+    
+          <select id="ardoClan">
+            <option>Clanless</option>
+            <option>Sendaris</option>
+            <option>Kaltaris</option>
+            <option>Mendoris</option>
+            <option>Nestoris</option>
+            <option>Voltaris</option>
+          </select>
+          <select id="secondArdoClan" disabled>
+            <option>None</option>
+            <option>Sendaris</option>
+            <option>Kaltaris</option>
+            <option>Mendoris</option>
+            <option>Nestoris</option>
+            <option>Voltaris</option>
+          </select>
+    
         </div>
+    
+        <input type="checkbox" id="ani" onchange="animalToggle()">
+        <label for="ani">My Character is a Pet/Animal</label>
+        <input type="text" placeholder="Animal/Mob" id="aniInput">
       </div>
-      <br />
-
-      Age<i>*</i>:
-      <input type="number" placeholder="24" min="0" id="ageInput" /> Years
-
-      <br />
+    
+      <div class="row-3" id="rowThree">
+    
+        <h2>Required</h2>
+    
+        <input type="text" maxlength="" placeholder="Personality" id="per">
+        <input type="text" maxlength="" placeholder="Weapons" id="wea">
+        <input type="text" maxlength="" placeholder="Powers" id="pow">
+        <input type="text" maxlength="" placeholder="Strenghts" id="str">
+        <input type="text" maxlength="" placeholder="Weaknesses" id="wea">
+      </div>
+    
+      <div class="row-4" id="rowFour" style="height: 50px;">
+        <div class="expander" onclick="openRow(3)">Expand "Optional Fields"</div>
+    
+        <h2>Optional</h2>
+    
+        <input type="text" maxlength="" placeholder="Family" id="fam">
+        <input type="text" maxlength="" placeholder="Friends" id="fri">
+        <input type="text" maxlength="" placeholder="Enemies" id="ene">
+        <input type="text" maxlength="" placeholder="Skills" id="ski">
+      </div>
+    
+      <div class="row-5" id="rowFive">
+    
+        <h2>Backstory</h2>
+    
+        <textarea maxlength="1500" placeholder="Insert Backstory Here" id="bac"></textarea>
+      </div>
+    
     </form>
 
     <script src="brainfuck.js"></script>

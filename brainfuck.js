@@ -1,87 +1,149 @@
 // Default Values
-var defaultGender = "Male";
-var defaultSpecies = "Human";
-var defaultSecondSpecies = "None";
+var defaultGender = "Male"
+var defaultSpecies = "Human"
+var defaultSecondSpecies = "None"
 var maxAges = [
-  "100", // Human
-  "100", // Felina
-  "300", // Ardoni
-  "800", // Netheran
-  "1000", // Glacian
-  "100", // Jagathan
-  "30", // Magnorite
-];
-var defaultHumanClass = "None";
-var defaultArdoniClan = "Clanless";
-var hybridOnByDefault = false;
-var necroOnByDefault = false;
+  [0, null],
+  [100, "Human"],
+  [100, "Felina"],
+  [300, "Ardoni"],
+  [800, "Netheran"],
+  [1000, "Glacian"],
+  [100, "Jaggathan"],
+  [30, "Magnorite"],
+  // =-=-=-=-=-= //
+  [400, "Enderknight"]
+]
+// =-=-=-=-=-= //
 
-// AUTOMATED SCRIPT PROCESS, DO NOT EDIT
-console.log("Script Information:\n> SoW OC Form Script\n> Created by: Sakura Sedaia\n> Version: V1.1 (Script Rewrite)\n=====================\n");
-console.group("Importing Hardcoded HTML Elements to Script");
-var grabMainSpecies = document.getElementById("speciesSelect");
-var mainSpeciesID = [];
-console.log("Pulled MainSpecies Select from HTML");
+// Internal Variables
+var activeSpe
+var activeCroSpe = 0
 
-var grabSecondSpecies = document.getElementById("crossbreed");
-var secondSpeciesID = [];
-console.log("Pulled SecondSpecies Select from HTML");
+// Create HTML References
+// _Names
+var name
+var alias
+var surname
 
-var extras = document.getElementById("extras");
-console.log("Pulled Extras Container (Main) from HTML");
+// _Age
+var age = document.getElementById("age") // Age Input
+var maxAge = document.getElementById("maxAge") // Maximum Age Text
 
-var extraPos = document.getElementById("extraPos");
-console.log("Pulled Extras Position (Main) from HTML");
+// _Species
+var mainSpecies = document.getElementById("spe")
+var crossSpecies = document.getElementById("croSpe")
+var necro = document.getElementById("nec")
+var ender = document.getElementById("end")
+var clan = document.getElementById("ardoClan")
+var clanDos = document.getElementById("secondArdoClan")
+var animal
+var animalText
+// =-=-=-=-=-= //
 
-var humExt = document.getElementById("humExt");
-console.log("Pulled Human Extras (Main) from HTML");
+// Startup Functions
+setMainSpecies()
+// setCrossSpecies()
 
-var ardoClan = document.getElementById("ardoClan");
-console.log("Pulled Ardoni Clans (Main) from HTML");
+// =-=-=-=-=-= //
+// Functions
+function setMaxAge() {
+  if (activeCroSpe == 0) {
+    activeCroSpe = activeSpe
 
-console.groupEnd("Importing Hardcoded HTML Elements to Script");
-console.log("=====================");
-console.group("Create Primary Species Element Variables");
+    console.log("Cross Species Lifespan Equalized")
+  }
+  maximumAgeValue = ((maxAges[activeSpe + 1][0] + maxAges[activeCroSpe][0]) / 2)
+  maxAge.innerText = maximumAgeValue
+  age.setAttribute('max',maximumAgeValue);
+  
+  if (age.value > maximumAgeValue) {
+    window.alert("Maximum age for your Species selection is " + maximumAgeValue );
+  }
 
-var i = 0;
-while (i < 7) {
-  var grabValues = grabMainSpecies.getElementsByTagName("option")[i].innerText.toLowerCase().substring(0, 3);
-  var currentID = grabValues + "Main";
-  grabMainSpecies.getElementsByTagName("option")[i].setAttribute("id", currentID);
-  mainSpeciesID.push(document.getElementById(currentID));
-  console.log("ID Created: " + currentID);
-  i++;
 }
-console.groupEnd("Create Primary Species Element Variables");
 
-console.group("Create Secondary Species Element Variables");
-var i = 1;
-while (i < 8) {
-  var grabValues = grabSecondSpecies.getElementsByTagName("option")[i].innerText.toLowerCase().substring(0, 3);
-  var currentID = grabValues + "Second";
-  grabSecondSpecies.getElementsByTagName("option")[i].setAttribute("id", currentID);
-  secondSpeciesID.push(document.getElementById(currentID));
-  console.log("ID Created: " + currentID);
-  i++;
-}
-console.groupEnd("Create Secondary Species Element Variables");
-console.log("=====================");
-var defaultConsole = console.group("Set Default Values");
+function setMainSpecies() {
+  var i = 0
+  while (i < mainSpecies.length) {
+    if (mainSpecies.value == maxAges[i][1]) {
+      console.log("Active Main Species = " + maxAges[i][1])
+      activeSpe = i
+    }
+    i++
+  }
 
-console.log('Default Gender Set to "' + defaultGender + '"\n');
-console.log('Default Primary Species Set to "' + defaultSpecies + '"\n');
-console.log('Default Secondary Species Set to "' + defaultSecondSpecies + '"\n');
-var ageConsole = console.group("Default Ages");
-var i = 0;
-while (i < maxAges.length) {
-  console.log(mainSpeciesID[i].innerText.toString() + " Max age set to " + maxAges[i]);
-  i++;
+  setMaxAge()
+  disableEnderknight()
 }
-console.groupEnd(ageConsole);
-console.log('Default Human Class Set to "' + defaultHumanClass + '"\n');
-console.log('Default Ardoni Clan Set to "' + defaultArdoniClan + '"\n');
-console.log('Default Hybdrid State Set to "' + hybridOnByDefault + '"\n');
-console.log('Default Necromancer State Set to "' + necroOnByDefault + '"\n');
-console.groupEnd(defaultConsole);
-console.log("=====================\nSetup complete\n=====================\n");
-// ALL RESPONSIVE SCRIPT GOES UNDER HERE
+
+
+
+function setEnderknight() {}
+
+function disableEnderknight() {
+  if (activeSpe /= 0) {
+    ender.setAttribute('disabled', '')
+  } else if (activeSpe == 0) {
+    ender.removeAttribute('disabled')
+  }
+}
+
+function animalToggle() {}
+
+/* Accordian JS */
+var rowOne = document.getElementById("rowOne")
+var rowTwo = document.getElementById("rowTwo")
+var rowThree = document.getElementById("rowThree")
+var rowFour = document.getElementById("rowFour")
+var rowFive = document.getElementById("rowFive")
+
+// height of rows
+var defaultHeight = "50px"
+var rowOneHeight = "160.225px"
+var rowTwoHeight = "209.425px"
+var rowThreeHeight = "158.425px"
+var rowFourHeight = "158.425px"
+var rowFiveHeight = "154.825px"
+
+function openRow(row) {
+  if (row == 0) {
+    if (rowOne.style.height == rowOneHeight) {
+      rowOne.style.height = defaultHeight
+    } else {
+      rowOne.style.height = rowOneHeight
+    }
+  }
+
+  if (row == 1) {
+    if (rowTwo.style.height == rowTwoHeight) {
+      rowTwo.style.height = defaultHeight
+    } else {
+      rowTwo.style.height = rowTwoHeight
+    }
+  }
+
+  if (row == 2) {
+    if (rowThree.style.height == rowThreeHeight) {
+      rowThree.style.height = defaultHeight
+    } else {
+      rowThree.style.height = rowThreeHeight
+    }
+  }
+
+  if (row == 3) {
+    if (rowFour.style.height == rowFourHeight) {
+      rowFour.style.height = defaultHeight
+    } else {
+      rowFour.style.height = rowFourHeight
+    }
+  }
+
+  if (row == 4) {
+    if (rowFive.style.height == rowFiveHeight) {
+      rowFive.style.height = defaultHeight
+    } else {
+      rowFive.style.height = rowFiveHeight
+    }
+  }
+}
